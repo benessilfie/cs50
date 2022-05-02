@@ -1,79 +1,58 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+typedef struct node
+{
+    int number;
+    struct node *next;
+}
+node;
+
 int main (void)
 {
-    // int list[3]; // this statically allocates an array of size 3
-    int *list = malloc(3 * sizeof(int)); //this dynamically allocates an array of size 3
-    if (list == NULL)
+   // list of size
+    node *list = NULL;
+
+    // Add n number to list
+    node *n = malloc(sizeof(node));
+    if (n == NULL) 
     {
         return 1;
     }
 
-    // Assign three numbers to that array
-    list[0] = 1;
-    list[1] = 2;
-    list[2] = 3;
+    n->number = 1;
+    n->next = NULL;
 
-    // Time passes
+    // Update list to point to new node
+    list = n;
 
-    //Here you can 1. Allocate new array of size 4
-
-    // int *tmp = malloc(4 * sizeof(int));
-    // if (tmp == NULL)
-    // {
-    //     free(list);
-    //     return 1;
-    // }
-
-    // copy numbers from old array into new array // NB:(You only need this is you go with option 1 above)
-    // for (int i = 0; i < 3; i++)
-    // {
-    //     tmp[i] = list[i];
-    // }
-
-    // Add fourth number to new array
-    // tmp[3] = 4;
-
-    // Free old array
-    // free(list);
-
-    // Remember new array
-    // list = tmp;
-
-    // Print new array
-    // for (int i = 0; i < 4; i++)
-    // {
-    //     printf("%i\n", list[i]);
-    // } 
-
-    // free new array
-    // free(list);
-
-    // OR
-
-    // 2. Resize the old array to be of size 4
-    int *tmp = realloc(list, 4 * sizeof(int));
-    if (tmp == NULL)
+    // Add a number to list
+    n = malloc(sizeof(node));
+    if (n == NULL) 
     {
         free(list);
         return 1;
     }
+    
+    n->number = 2;
+    n->next = NULL;
+    list->next = n;
 
-    // Add fourth number to new array
-    tmp[3] = 4;  
-
-    // Remember new array
-    list = tmp;
-
-    // Print new array
-    for (int i = 0; i < 4; i++)
+    // Add a number to list
+    n = malloc(sizeof(node));
+    if (n == NULL) 
     {
-        printf("%i\n", list[i]);
-    } 
+        free(list->next);
+        free(list);
+        return 1;
+    }
 
-    // free new array
-    free(list);
+    n->number = 3;
+    n->next = NULL;
+    list->next->next = n;
+
+    // Print numbers
+    
 
     return 0;
 }

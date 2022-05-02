@@ -52,7 +52,10 @@ int main (void)
     list->next->next = n;
 
     // Print numbers
-    
+    for (node *tmp = list; tmp != NULL; tmp = tmp->next)
+    {
+        printf("%i\n", tmp->number);
+    }
 
     return 0;
 }

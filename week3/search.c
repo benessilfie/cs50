@@ -5,7 +5,7 @@ int main(void) {
     string strings[] = {"battleship", "boot",    "cannon",
                         "iron",       "thimble", "top hat"};
 
-    int n = get_int("Number: ");
+    int n = get_int("Get Number: ");
 
     for (int i = 0; i < 7; i++) {
         if (numbers[i] == n) {

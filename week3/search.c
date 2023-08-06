@@ -1,15 +1,16 @@
 #include <cs50.h>
 #include <stdio.h>
+#include <string.h>
 
 int main(void) {
     string strings[] = {"battleship", "boot",    "cannon",
                         "iron",       "thimble", "top hat"};
 
-    int n = get_int("Get Number: ");
+    string s = get_string("String: ");
 
     for (int i = 0; i < 7; i++) {
-        if (numbers[i] == n) {
-            printf("Found\n");
+        if (strcmp(strings[i], s) == 0) {
+            printf("Found %s\n", strings[i]);
             return 0;
         }
     }
